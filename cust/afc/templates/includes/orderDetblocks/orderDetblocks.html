@@ -1,0 +1,189 @@
+<venda_detblock1>
+<venda_block label=601,workflow=shopcart,curstep=confirm>
+<script type="text/javascript">
+<!--
+numberAddresses = numberAddresses+1;
+// -->
+</script>
+</venda_block label=601>
+
+<div class="confirmTop">
+<div class="confirmLeft">
+<venda_block label=47,pkshipreq=1>
+<!-- start delivery address -->
+    <div class="deliveryaddress" id="deliveryaddress">
+    <h2><span></span><venda_text id=site.order_details.delivery_details></h2><div>
+    <venda_block label=123,pkaddr1=-><p class="error bold incompleteadd">Please complete your address before continuing</p></venda_block label=123>
+    <p>
+    <span class="addrName"><strong><venda_block label=181,pktitle=notnull><venda_pktitle> </venda_block label=181><venda_pkfname><venda_block label=77,pkmname=notnull> <venda_pkmname></venda_block label=77> <venda_pklname></strong></span><br>
+    <venda_block label=71,pkcompany=notnull><venda_pkcompany><br></venda_block label=71>
+    <venda_block label=182,pknum=notnull><venda_pknum> </venda_block label=182><venda_block label=183,pkaddr1=notnull><venda_pkaddr1><br></venda_block label=183>
+    <venda_block label=72,pkaddr2=notnull><venda_pkaddr2><br></venda_block label=72>
+
+    <!-- if country is US or US entities display this formatting -->
+    <venda_block label=999,mode=value,<venda_pkcntry>=United States,<venda_pkcntry>=United States Non-48,<venda_pkcntry>=United States Armed Forces,operator=or>
+    <venda_block label=184,pkcity=notnull><venda_pkcity>, </venda_block label=184>
+    <venda_block label=185,pkstate=notnull><venda_pkstate> </venda_block label=185><venda_pkzipc><br>
+    </venda_block label=999>
+
+    <!-- if country is NOT US or US entities display this formatting -->
+    <venda_block label=9991,mode=value,<venda_pkcntry>!=United States,<venda_pkcntry>!=United States Non-48,<venda_pkcntry>!=United States Armed Forces,operator=and>
+    <venda_block label=184,pkcity=notnull><venda_pkcity><br></venda_block label=184>
+    <venda_block label=185,pkstate=notnull><venda_pkstate> </venda_block label=185><venda_pkzipc><venda_block label=1234,pkstate=notnull,pkzipc=notnull,operator=or><br></venda_block label=1234>
+    </venda_block label=9991>
+
+    <venda_block label=56,pkcntry=notnull><venda_pkcntry></venda_block label=56>
+    <venda_block label=43,pkarea=notnull,pkphone=notnull,operator=or><br><span class="addrPhone"><venda_text id=site.address_details.label.fax> <venda_block label=100,mode=value,<venda_setting type=ebiz,name=hidearea>!=1><venda_block label=11,pkarea=notnull><venda_pkarea>&nbsp;</venda_block label=11></venda_block label=100><venda_block label=12,pkphone=notnull><venda_pkphone></venda_block label=12></span></venda_block label=43>
+    <venda_block label=58,pkfarea=notnull,pkfax=notnull,operator=or><br><span class="addrFax"><venda_text id=site.address_details.label.fax> <venda_block label=105,mode=value,<venda_setting type=ebiz,name=hidearea>!=1><venda_block label=104,pkfarea=notnull><venda_pkfarea>&nbsp;</venda_block label=104></venda_block label=105><venda_block label=106,pkfax=notnull><venda_pkfax></venda_block label=106></span></venda_block label=58>
+    </p>
+    <venda_block label=2201,<venda_setting type=ebiz,name=billingdeliveryonly>!=1,mode=value>
+    <venda_block label=502,workflow!=ordlookup,curstep=confirm>
+	    <venda_block label=90,mode=value,<venda_glxt mode=get,name=glxtusertype>!=p>
+    	    <a href="#" onclick='<venda_wizbutton step=shipadd,param2=adbook,mode=process,callonly=yes> return false;'><venda_text id=site.button.edit_delivery_address></a>
+	    </venda_block label=90>
+	    <venda_block label=91,mode=value,<venda_glxt mode=get,name=glxtusertype>=p>
+		    <a href="#" onclick='<venda_wizbutton step=editadd,param1=copybillto,wizard=singleadbook,mode=process,callonly=yes> return false;'><venda_text id=site.button.edit_delivery_address></a>
+	    </venda_block label=91>
+    </venda_block label=502>
+    </venda_block label=2201>
+    </div></div>
+    <!-- end delivery address -->
+
+    <div class="deliveryrate">
+    <h2><span></span><venda_text id=site.order_details.delivery_options></h2><div class="deliveryoptions">
+    <venda_block label=401,workflow!=ordlookup><ul><venda_detail3></ul></venda_block label=401>
+    <venda_block label=402,workflow=ordlookup><p><venda_pkshipmthd></p></venda_block label=402>
+    <a title="<venda_text id=site.link.more> <venda_text id=site.title.open_in_a_new_window>" href="<venda_dispview page=deliveryinfo>&layout=staticpopup" rel="popup console 550 450" target="_blank"><venda_text id=site.link.more></a></div>
+    </div>
+</div>
+
+<div class="confirmRight">
+
+
+<venda_block label=501,workflow!=ordlookup>
+<venda_block label=4411,mode=value,<venda_curstep>=confirm>
+<!-- start orxfields grp1&2 for wz_orcf-screen -->
+	<venda_block label=4422,mode=value,<venda_realpktot>=1>
+		<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,group=1,template=orxtSet,type=exfields/order>
+		<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,group=2,template=orxtSet,type=exfields/order>
+	</venda_block label=4422>
+<!-- end orxfields grp1&2 for wz_orcf-screen -->
+</venda_block label=4411>
+<venda_block label=4412,mode=value,<venda_curstep>=finish>
+<!-- start orxfields grp1&2 for wz_orfn-screen -->
+	<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,template=orxtDisplay,type=exfields/order,group=1,displayonly=1>
+	<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,template=orxtDisplay,type=exfields/order,group=2,displayonly=1>
+<!-- end orxfields grp1&2 for wz_orfn-screen & wz_orpo-screen -->
+</venda_block label=4412>
+</venda_block label=501>
+</venda_block label=47>
+<venda_block label=471,pkshipreq!=1><p><venda_text id=site.order_details.services_and_gift_certificates></p></venda_block label=471>
+
+<venda_block label=502,pkshipreq=1,workflow=ordlookup>
+<!-- start orxfields grp1&2 for wz_orpo-screen -->
+	<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,template=orxtDisplay,type=exfields/order,group=1,displayonly=1>
+	<venda_extflds exfldtype=order,ref=<venda_ohrfnbr>,template=orxtDisplay,type=exfields/order,group=2,displayonly=1>
+<!-- end orxfields grp1&2 for wz_orpo-screen -->
+</venda_block label=502>
+
+<div class="orderitems<venda_block label=472,pkshipreq!=1> noship</venda_block label=472>">
+<table cellpadding="0" cellspacing="0" summary="<venda_text id=site.order_details.table_summary>" title="<venda_text id=site.order_details.table_title>" class="wizrtable">
+<thead>
+<tr>
+	<th scope="col" colspan="2" class="items">Items in Your Order</th>
+	<th scope="col" class="price">Price</th>
+	<th scope="col" class="qty">Qty</th>
+	<th scope="col" class="totla">Total</th>
+	<!-- th scope="col" class="thumb"><span><venda_text id=site.order_details.column_heading.product_image></span></th -->
+	<!-- th scope="col" class="name"><span><venda_text id=site.order_details.column_heading.product_name></span></th -->
+	<!-- th scope="col" class="priceeach"><span><venda_text id=site.order_details.column_heading.price_each></span></th -->
+	<!-- th scope="col" class="quantity"><span><venda_text id=site.order_details.column_heading.quantity></span></th -->
+	<!-- th scope="col" class="totalprice"><span><venda_text id=site.order_details.column_heading.total_price></span></th -->
+    <venda_block label=500,workflow=ordlookup>
+   	<th scope="col" class="status"><span><venda_text id=site.order_details.column_heading.status></span></th>
+    </venda_block label=500>
+</tr>
+</thead>
+<tbody>
+<venda_block label=473,pkshipreq!=1><!-- If giftcert use normal detblock as this splits the delivery package -->
+	<venda_detail2>
+</venda_block label=473>
+<venda_block label=474,pkshipreq=1><!-- Used for normal and bundle products -->
+	<venda_order ref=<venda_ohrfnbr>,shopcart=1,template=bundleorder>
+</venda_block label=474>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="confBottom">
+
+</venda_detblock1>
+
+<venda_block label=701,mode=value,<venda_setting type=ebiz,name=tracktagwebtrends>=1>
+<script type="text/javascript">
+<!--
+	<venda_tpcomment>// Define variable to get category ref for webtrendsmeta </venda_tpcomment>
+	var parentcat = "";
+	var itemcount = 0;
+-->
+</script>
+</venda_block label=701>
+
+<venda_detblock2>
+<tr>
+	<venda_block label=50,oiitype=3>
+	<td class="thumb gcimage"><venda_block label=150,med-<venda_setting type=ebiz,name=setordersummaryimagekey>=notnull><venda_media rec=invt,type=movie-swf-pict,key=<venda_setting type=ebiz,name=setordersummaryimagekey>></venda_block label=150>
+			<venda_block label=151,med-<venda_setting type=ebiz,name=setordersummaryimagekey>=null><img src="<venda_entmediaadd>/ebiz/<venda_bsref>/resources/images/no_image_<venda_setting type=ebiz,name=setordersummaryimagekey>.gif" alt="<venda_text id=site.link.alt.no_image.invt>"></venda_block label=151></td>
+	</venda_block label=50>
+
+	<td valign="top" class="name"><span class="productname"><venda_oiivname><venda_block label=111,invtatt1=notnull> <venda_text id=site.basket.product_name.attribute_start><venda_invtatt1><venda_block label=112,invtatt2=notnull><venda_text id=site.basket.product_name.attribute_separator><venda_invtatt2></venda_block label=112><venda_block label=113,invtatt3=notnull><venda_text id=site.basket.product_name.attribute_separator><venda_invtatt3></venda_block label=113><venda_block label=114,invtatt4=notnull><venda_text id=site.basket.product_name.attribute_separator><venda_invtatt4></venda_block label=114><venda_text id=site.basket.product_name.attribute_end></venda_block label=111></span><venda_extflds exfldtype=orderitem,group=1,template=oixtDisplay,type=exfields/orderItem,ref=<venda_invtref>,displayonly=1><venda_extflds exfldtype=orderitem,group=2,template=oixtDisplay,type=exfields/orderItem,ref=<venda_invtref>,displayonly=1><venda_block label=151,oiitype!=3><span class="sku"><venda_text id=site.basket.product_sku><venda_invtref></span></venda_block label=151>
+
+	</td>
+
+	<venda_block label=53,oiitype=3><td>&nbsp;</td><td>&nbsp;</td></venda_block label=53>
+	<td class="priceeach"><venda_ohcursym><venda_oisub></td>
+	<td class="quantity"><venda_oiqty></td>
+	<td class="totalprice"><venda_ohcursym><venda_oiextsub></td>
+<venda_block label=311,status=notnull>
+	<td valign="top">&nbsp;&nbsp;&nbsp;<venda_block label=22,status!=On Hold><venda_block label=26,status=Despatched>In Dispatch</venda_block label=26><venda_block label=27,status!=Despatched><venda_status></venda_block label=27></venda_block label=22><venda_block label=23,status=On Hold>In Progress</venda_block label=23>
+	</td>
+</venda_block label=311>
+</tr>
+
+<venda_block label=45,oiitype=3>
+<tr class="giftDetails">
+	<td colspan="7">
+	<venda_text id=site.order_details.gift_certificate_sent_to>
+
+	<venda_block label=880,gcexpires=notnull><br>
+	<venda_text id=site.order_details.gift_certificate_expiry_date> <venda_block label=88,mode=value,<venda_setting type=ebiz,name=mmdddates>!=1><venda_gcexpires></venda_block label=88><venda_block label=89,mode=value,<venda_setting type=ebiz,name=mmdddates>=1><venda_dateformat type=digit,format=mm/dd/yyyy,suffix=0,date=<venda_gcexpires>></venda_block label=89>
+	</venda_block label=880>
+
+	<br>
+	<venda_text id=site.order_details.gift_certificate_message> <venda_oicmt>
+	<!-- <br>From: <strong><venda_gcfrom></strong> -->
+	</td>
+<venda_block label=312,status=notnull>
+    <td></td>
+</venda_block label=312>
+</tr>
+</venda_block label=45>
+
+<venda_block label=604,workflow=shopcart,curstep=finish>
+<venda_block label=605,mode=value,<venda_setting type=ebiz,name=tracktagvbm>=1>
+<script type="text/javascript">
+for(var i=0;i<<venda_oiqty>;i++) {
+vbmParentTrack += "<venda_block label=606,invtparef!=null><venda_invtparef></venda_block label=606><venda_block label=607,invtparef=null><venda_invtref></venda_block label=607>,";
+}
+
+for(var i=0;i<<venda_oiqty>;i++) {
+vbmParentPrices += "<venda_oisub>,";
+}
+</script>
+</venda_block label=605></venda_block label=604>
+<venda_inctemplate name=cmCreateShopAction9Tag,type=includes/tracking/coremetrics>
+<venda_block label=702,mode=value,<venda_setting type=ebiz,name=tracktagwebtrends>=1><venda_inventory ref=<venda_invtref>,temp=tracking_category></venda_block label=702>
+<venda_inctemplate name=siteCatalystDetblock,type=includes/tracking/siteCatalyst>
+</venda_detblock2>
+</div>
